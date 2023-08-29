@@ -8,9 +8,9 @@ register = template.Library()
 
 @register.filter()
 def absolute_path(value):
-    return f'media/{value}'
+    return f'/media/{value}'
 
 
 @register.simple_tag
 def abspth(value):
-    return f'media/{value}'
+    return f'/media/{value}'

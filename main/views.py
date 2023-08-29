@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from main.models import Product, Category
 
 
 def contacts(request):
@@ -6,8 +7,10 @@ def contacts(request):
 
 
 def product(request):
-    return render(request, 'main/product.html')
+    product = Product.objects.get(id=int(request.GET.get('id')))
+    return render(request, 'main/product.html', context={"model": product})
 
 
 def products(request):
-    return render(request, 'main/products.html', context={"range": range(100), "desc": "ОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписание", "img": "kot.png"})
+    product = Product.objects.all()
+    return render(request, 'main/products.html', context={"model": product})
